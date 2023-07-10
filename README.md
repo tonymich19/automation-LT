@@ -18,3 +18,12 @@ For this exercise we're using:
   7. Finish the order.
   8. Validate that you finish the order.
   9. Validate that you are at the “CHECKOUT: COMPLETE!” page using that text or another one.
+
+#How to run the project
+
+  1. Have NPM installed.
+  2. Install Cypress by executing the Command Line npm install cypress from the project root.
+  3. Execute the tests by:
+    3.1 Opening the Cypress App by executing the command line npm cy:open from the project root.
+     or
+    3.2 Running Headless mode test by executing the command line npm cy:run from the project root.
