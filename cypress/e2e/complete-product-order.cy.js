@@ -7,9 +7,17 @@ import checkoutPageOne from "../pages/checkout-page-one";
 import checkoutPageTwo from "../pages/checkout-page-two";
 
 
+describe('LT Exercise', () => {
 
-describe('testing', () => {
-  beforeEach('Access Login Page', () => {
+  let userdata;
+  beforeEach('Access Sauce Demo Login Page', () => {
+
+    cy.fixture('userdata').then((data) => {
+
+      userdata = data;
+
+    })
+
     // 1. Go to https://www.saucedemo.com/
     cy.visit('/');
     loginPage.elements.usernameField().should('be.visible');
@@ -18,11 +26,11 @@ describe('testing', () => {
 
   })
 
-  it('testing visit ', () => {
+  it('Order product workflow', function() {
 
     // 2. Log in to the application with the “standard_user” user.
-    loginPage.enterUsername('standard_user');
-    loginPage.enterPassword('secret_sauce');
+    loginPage.enterUsername(userdata.username);
+    loginPage.enterPassword(userdata.password);
     loginPage.clickOnLoginBtn();
 
     // 3. Add any product to the cart.
@@ -50,9 +58,9 @@ describe('testing', () => {
     cartPage.clickOnCheckOutBtn();
 
     // 5. Fill in the information and continue to the next page.
-    checkoutPageOne.enterFirstName('Tony');
-    checkoutPageOne.enterLastName('Correia');
-    checkoutPageOne.enterZipCode('100001');
+    checkoutPageOne.enterFirstName(userdata.firstName);
+    checkoutPageOne.enterLastName(userdata.lastName);
+    checkoutPageOne.enterZipCode(userdata.zipCode);
     checkoutPageOne.clickOnContinueBtn();
 
     // 6. In the “CHECKOUT: OVERVIEW” page, validate that the item name text is the same that you got in step 3.1
@@ -71,7 +79,6 @@ describe('testing', () => {
                     .and('contain', 'Checkout: Complete!')
                     .url().should('be.equal', 'https://www.saucedemo.com/checkout-complete.html')
     
-
   })
 
 })
