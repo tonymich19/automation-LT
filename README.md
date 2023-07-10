@@ -26,5 +26,3 @@ For this exercise we're using:
   3. Execute the tests by:  
     3.1 Opening the Cypress App by executing the command line `npm cy:open` from the project root.  
       3.2 Running Headless mode test by executing the command line `npm cy:run` from the project root.  
-      
-``
